@@ -34,6 +34,7 @@ Host 负责不规则控制和未下放算子。Prefill overlay 以 INT8 systolic
 | --- | --- |
 | [`prefill/`](prefill/) | Prefill RTL、`Versa_P` 顶层、KV260 IP wrapper 和 filelist。 |
 | [`decode/`](decode/) | Decode RTL、`T_NPU_FPGA` 顶层、流式 decode pipeline、工具模块和 filelist。 |
+| [`software/llama_cpp`](software/llama_cpp) | 以固定 Git submodule 引用的配套 Host 软件栈。 |
 | [`docs/`](docs/) | 架构、硬件接口、配套软件和已有结果。 |
 
 阶段说明见 [prefill/README.md](prefill/README.md) 与 [decode/README.md](decode/README.md)。
@@ -51,7 +52,15 @@ Host 负责不规则控制和未下放算子。Prefill overlay 以 INT8 systolic
 
 ## 软件边界
 
-Host 集成位于独立仓库 [`zhenyanggu/llama_cpp`](https://github.com/zhenyanggu/llama_cpp/tree/npu-dev) 的 `npu-dev` 分支；比赛兼容版本固定为 [`bf5e05be8`](https://github.com/zhenyanggu/llama_cpp/commit/bf5e05be8ba6710c959e4a400c586ec00e0ae4ca)。其中包含 llama.cpp/ggml NPU backend、runtime、Linux driver、buffer 管理、descriptor 构造和 overlay 切换逻辑，本仓库不复制这些代码。
+Host 集成位于独立仓库 [`zhenyanggu/llama_cpp`](https://github.com/zhenyanggu/llama_cpp/tree/npu-dev) 的 `npu-dev` 分支，并作为浅层 Git submodule 挂在 [`software/llama_cpp`](software/llama_cpp)。子模块固定到比赛兼容版本 [`bf5e05be8`](https://github.com/zhenyanggu/llama_cpp/commit/bf5e05be8ba6710c959e4a400c586ec00e0ae4ca)。
+
+同时获取硬件与软件：
+
+```bash
+git clone --recurse-submodules https://github.com/zhenyanggu/VersaVLM.git
+```
+
+已经克隆主仓时，执行 `git submodule update --init --recursive`。该软件栈包含 llama.cpp/ggml NPU backend、runtime、Linux driver、buffer 管理、descriptor 构造和 overlay 切换逻辑；模块位置和软硬件边界见 [软件栈文档](docs/software-stack.md)。
 
 ## 已报告结果
 

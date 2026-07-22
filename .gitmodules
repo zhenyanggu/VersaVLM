@@ -1,0 +1,5 @@
+[submodule "software/llama_cpp"]
+	path = software/llama_cpp
+	url = https://github.com/zhenyanggu/llama_cpp.git
+	branch = npu-dev
+	shallow = true

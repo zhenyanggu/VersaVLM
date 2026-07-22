@@ -34,6 +34,7 @@ The host executes irregular control and unsupported operators. The prefill overl
 | --- | --- |
 | [`prefill/`](prefill/) | Prefill RTL, `Versa_P` top, KV260 IP wrapper, and core filelist. |
 | [`decode/`](decode/) | Decode RTL, `T_NPU_FPGA` top, stream decode pipeline, utilities, and filelists. |
+| [`software/llama_cpp`](software/llama_cpp) | Companion host stack as a pinned Git submodule. |
 | [`docs/`](docs/) | Architecture, hardware contract, companion software, and reported results. |
 
 The stages are documented independently in [prefill/README.md](prefill/README.md) and [decode/README.md](decode/README.md).
@@ -51,9 +52,15 @@ Generated Vivado projects, constraints, block-design scripts, IP packaging metad
 
 ## Software Boundary
 
-Host integration lives in the separate [`zhenyanggu/llama_cpp`](https://github.com/zhenyanggu/llama_cpp/tree/npu-dev) repository on branch `npu-dev`. The competition-compatible revision is [`bf5e05be8`](https://github.com/zhenyanggu/llama_cpp/commit/bf5e05be8ba6710c959e4a400c586ec00e0ae4ca).
+Host integration lives in the separate [`zhenyanggu/llama_cpp`](https://github.com/zhenyanggu/llama_cpp/tree/npu-dev) repository on branch `npu-dev`. It is registered at [`software/llama_cpp`](software/llama_cpp) as a shallow Git submodule pinned to the competition-compatible revision [`bf5e05be8`](https://github.com/zhenyanggu/llama_cpp/commit/bf5e05be8ba6710c959e4a400c586ec00e0ae4ca).
 
-That software supplies the llama.cpp/ggml NPU backend, runtime, Linux driver, buffer management, descriptor construction, and overlay switching. It is not vendored here. See [docs/software-stack.md](docs/software-stack.md) for the boundary and license notes.
+Clone both repositories together with:
+
+```bash
+git clone --recurse-submodules https://github.com/zhenyanggu/VersaVLM.git
+```
+
+For an existing clone, initialize the software stack with `git submodule update --init --recursive`. The submodule supplies the llama.cpp/ggml NPU backend, runtime, Linux driver, buffer management, descriptor construction, and overlay switching. See [docs/software-stack.md](docs/software-stack.md) for component locations, the hardware/software boundary, and license notes.
 
 ## Reported Results
 
