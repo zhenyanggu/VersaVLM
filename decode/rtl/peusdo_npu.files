@@ -1,0 +1,2 @@
+npu/inst_ctrl.sv
+top/peusdo_T_NPU.sv

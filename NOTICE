@@ -1,0 +1,21 @@
+VersaVLM
+Copyright 2026 FuxionLab
+
+This product includes software developed by FuxionLab and third-party components.
+
+The radix-16 divider support files under decode/rtl/utils/div include work by
+Yifei He and HYF and are distributed under the BSD 3-Clause License. Their
+copyright and license notices are retained in the source files.
+
+The DRAM simulation utilities under decode/rtl/utils/dram_sim_base and
+decode/rtl/utils/dram_sim_v5 include work by ETH Zurich and contributors and
+are distributed under the Solderpad Hardware License v0.51 (SHL-0.51). Their
+SPDX identifiers and notices are retained in the source files.
+
+The companion host software is based on llama.cpp and is maintained in a
+separate repository under the MIT License. It is linked for interoperability
+only and is not included in this distribution.
+
+Earlier repository revisions contained non-redistributable memory simulation
+models and a restricted zero-counter implementation. Those files are not part
+of this distribution; they were replaced with independently written models.

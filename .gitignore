@@ -1,0 +1,39 @@
+# Vivado generated state
+.Xil/
+*.cache/
+*.gen/
+*.hw/
+*.ip_user_files/
+*.runs/
+*.sim/
+*.srcs/
+*.xpr
+
+# Generated hardware and deployment artifacts
+*.bit
+*.bin
+*.xsa
+*.hwh
+*.ltx
+*.dcp
+*.mcs
+*.prm
+
+# Logs, reports, and temporary files
+*.jou
+*.log
+*.rpt
+*.str
+*.wdb
+*.vcd
+*.pb
+*.tmp
+*.bak
+*~
+
+# Editors and operating systems
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+desktop.ini
